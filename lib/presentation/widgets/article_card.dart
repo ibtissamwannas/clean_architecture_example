@@ -1,4 +1,3 @@
-
 import 'package:clean_architecture_example/core/theme.dart';
 import 'package:clean_architecture_example/domain/entities/article_entity.dart';
 import 'package:clean_architecture_example/presentation/pages/article_page.dart';
@@ -9,7 +8,7 @@ import 'package:flutter/material.dart';
 class ArticleCard extends StatelessWidget {
   final ArticleEntity article;
 
-  const ArticleCard({Key? key, required this.article}) : super(key: key);
+  const ArticleCard({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class ArticleCard extends StatelessWidget {
               height: 120,
               margin: const EdgeInsets.all(10.0),
               borderRadius: 5,
-              imageUrl: article.urlToImage! ??
+              imageUrl: article.urlToImage ??
                   'https://img.freepik.com/free-photo/closeup-shot-bee-chamomile-flower_181624-31930.jpg',
             ),
             const SizedBox(width: 10),

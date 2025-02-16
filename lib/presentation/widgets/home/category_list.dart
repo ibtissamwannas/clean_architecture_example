@@ -1,6 +1,5 @@
 import 'package:clean_architecture_example/presentation/widgets/home/category_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:clean_arch_news_app/presentation/widgets/home/category_widget.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({super.key});

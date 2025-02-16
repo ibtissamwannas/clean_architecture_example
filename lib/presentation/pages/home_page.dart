@@ -1,9 +1,8 @@
-
+import 'package:clean_architecture_example/domain/bloc/articles_bloc/articles_bloc.dart';
 import 'package:clean_architecture_example/presentation/widgets/home/articles_widget.dart';
 import 'package:clean_architecture_example/presentation/widgets/home/category_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

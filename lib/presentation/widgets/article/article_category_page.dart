@@ -1,5 +1,5 @@
-
 import 'package:clean_architecture_example/core/theme.dart';
+import 'package:clean_architecture_example/domain/bloc/article_category_bloc/articles_category_bloc.dart';
 import 'package:clean_architecture_example/presentation/widgets/article/loading_article_list.dart';
 import 'package:clean_architecture_example/presentation/widgets/article_card.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ArticleCategoryPage extends StatefulWidget {
   final String category;
-  const ArticleCategoryPage({Key? key, required this.category})
-      : super(key: key);
+  const ArticleCategoryPage({super.key, required this.category});
 
   @override
   State<ArticleCategoryPage> createState() => _ArticleCategoryPageState();
@@ -20,7 +19,7 @@ class _ArticleCategoryPageState extends State<ArticleCategoryPage> {
     super.initState();
     Future.microtask(
       () => context
-          .read<ArticleCategoryBloc>()
+          .read<ArticlesByCategoryBloc>()
           .add(FetchArticlesByCategory(widget.category)),
     );
   }
@@ -36,14 +35,14 @@ class _ArticleCategoryPageState extends State<ArticleCategoryPage> {
           style: primaryTextStyle.copyWith(fontSize: 20, fontWeight: semiBold),
         ),
       ),
-      body: BlocBuilder<ArticleCategoryBloc, ArticleCategoryState>(
+      body: BlocBuilder<ArticlesByCategoryBloc, ArticlesCategoryState>(
         builder: (context, state) {
-          if (state is ArticleCategoryLoading) {
+          if (state is ArticlesCategoryLoading) {
             return const Padding(
               padding: EdgeInsets.only(top: 8),
               child: LoadingArticleList(),
             );
-          } else if (state is ArticleCategoryHasData) {
+          } else if (state is ArticlesCategoryHasData) {
             return Padding(
               padding: const EdgeInsets.only(top: 8),
               child: ListView.builder(
@@ -55,9 +54,9 @@ class _ArticleCategoryPageState extends State<ArticleCategoryPage> {
                 },
               ),
             );
-          } else if (state is ArticleCategoryEmpty) {
+          } else if (state is ArticlesCategoryEmpty) {
             return Center(child: Text(state.message));
-          } else if (state is ArticleCategoryError) {
+          } else if (state is ArticlesCategoryError) {
             return Center(child: Text(state.message));
           } else {
             return const Center(child: Text(''));
